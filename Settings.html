@@ -1,0 +1,178 @@
+<!-- CSS package to apply Google styling to buttons and other elements. -->
+<link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
+
+<div class="sidebar">
+  <form id="settingsForm">
+    <button class="action" id="saveA"  >Save</button>
+    <button                id="cancelA">Cancel</button>  
+
+    <table id="settingsTable">
+      <tr><td><span    title="If checked, create PDF version as well as Doc.">
+              <input    name="CreatePDF"     type="checkbox"    <?= props[  'CreatePDF'    ] ?> >
+              <label     for="CreatePDF"     >Create PDF(s) (as well as Doc)</label></span></td>
+          <td></td></tr>
+      <tr><td><span    title="If checked, create Doc read only.">
+              <input    name="CreateRO"      type="checkbox"    <?= props[  'CreateRO'    ] ?> >
+              <label     for="CreateRO"      >Create Doc(s) read only</label></span></td>
+          <td></td></tr>
+      <tr><td><span    title="If checked, remove old  versions (including PDFs).">
+              <input    name="RemoveOld"     type="checkbox"    <?= props[  'RemoveOld'    ] ?> >
+              <label     for="RemoveOld"     >Remove old versions</label></span></td>
+          <td></td></tr>
+      <tr><td><span    title="If checked, replace macros, header and footer.">
+              <input    name="ReplaceText"   type="checkbox"    <?= props[  'ReplaceText'  ] ?> >
+              <label     for="ReplaceText"   >Replace macros, header and footer</label></span></td>
+          <td></td></tr>
+      <tr><td><span    title="If checked, show Check document feature.">
+              <input    name="ShowCheck"     type="checkbox"    <?= props[    'ShowCheck'  ] ?> >
+              <label     for="ShowCheck"     >Show Check document menu item</label></span></td>
+          <td></td></tr>
+      <tr><td><span    title="If checked, show Test menu (for debugging only).">
+              <input    name="ShowTest"      type="checkbox"    <?= props[    'ShowTest'   ] ?> >
+              <label     for="ShowTest"      >Show Test menu (for debugging only)</label></span></td>
+          <td></td></tr>
+
+      <tr><td><span    title="Replace all text in this heading (e.g. answers and teacher notes) with blank lines in student version.">
+              <label     for="ClearHeading">Clear all text in heading:</label></span></td>
+          <td><select   name="ClearHeading">
+            <option value="Heading3" <?= ( 'Heading3' == props[ 'ClearHeading' ] ) ?'selected':'' ?> >Heading 3</option>
+            <option value="Heading4" <?= ( 'Heading4' == props[ 'ClearHeading' ] ) ?'selected':'' ?> >Heading 4</option>
+            <option value="Heading5" <?= ( 'Heading5' == props[ 'ClearHeading' ] ) ?'selected':'' ?> >Heading 5</option>
+            <option value="Heading6" <?= ( 'Heading6' == props[ 'ClearHeading' ] ) ?'selected':'' ?> >Heading 6</option>
+          </select></td></tr>
+      
+      <tr><td><span    title="For sample version, CAU only copies content between these tags.">
+              <label     for="SampleStart"   >Sample version starts at this tag:</label></span></td>
+          <td><input    name="SampleStart"   type="text" value="<?= props[  'SampleStart' ] ?>"></td></tr>
+      <tr><td><span    title="For sample version, CAU only copies content between these tags.">
+              <label     for="SampleStop"    >Sample version  ends  at this tag:</label></span></td>
+          <td><input    name="SampleStop"    type="text" value="<?= props[  'SampleStop'  ] ?>"></td></tr>
+      <tr><td><span    title="For student version, CAU only copies content between these tags.">
+              <label     for="StudentStart"  >Student version starts at this tag:</label></span></td>
+          <td><input    name="StudentStart"  type="text" value="<?= props[  'StudentStart' ] ?>"></td></tr>
+      <tr><td><span    title="For student version, CAU only copies content between these tags.">
+              <label     for="StudentStop"   >Student version  ends  at this tag:</label></span></td>
+          <td><input    name="StudentStop"   type="text" value="<?= props[  'StudentStop'  ] ?>"></td></tr>
+      <tr><td><span    title="For teacher version, CAU only copies content between these tags.">
+              <label     for="TeacherStart"  >Teacher version starts at this tag:</label></span></td>
+          <td><input    name="TeacherStart"  type="text" value="<?= props[  'TeacherStart' ] ?>"></td></tr>
+      <tr><td><span    title="For teacher version, CAU only copies content between these tags.">
+              <label     for="TeacherStop"   >Teacher version  ends  at this tag:</label></span></td>
+          <td><input    name="TeacherStop"   type="text" value="<?= props[  'TeacherStop'  ] ?>"></td></tr>
+      <tr><td><span    title="Remove this suffix to create other versions.">
+              <label     for="AuthorSuffix"  >Suffix for author version:</label></span></td>
+          <td><input    name="AuthorSuffix"  type="text" value="<?= props[ 'AuthorSuffix'  ] ?>"></td></tr>
+      <tr><td><span    title="Append this suffix to the sample version.">
+              <label     for="SampleSuffix"  >Suffix for sample version:</label></span></td>
+          <td><input    name="SampleSuffix"  type="text" value="<?= props[ 'SampleSuffix'  ] ?>"></td></tr>
+      <tr><td><span    title="Append this suffix to the student version.">
+              <label     for="StudentSuffix" >Suffix for student version:</label></span></td>
+          <td><input    name="StudentSuffix" type="text" value="<?= props[ 'StudentSuffix' ] ?>"></td></tr>
+      <tr><td><span    title="Append this suffix to the teacher version.">
+              <label     for="TeacherSuffix" >Suffix for teacher version:</label></span></td>
+          <td><input    name="TeacherSuffix" type="text" value="<?= props[ 'TeacherSuffix' ] ?>"></td></tr>
+
+      <tr><td><span    title="Flag text above this Coleman-Liau index for readability issues (<10 = high school, >16 = graduate school).">
+              <label     for="ReadabilityCL" >Readability - Coleman-Liau index:</label></span></td>
+          <td><input    name="ReadabilityCL" type="text" value="<?= props[ 'ReadabilityCL' ] ?>"></td></tr>
+      <tr><td><span    title="Flag text above this Flesch-Kincaid index for readability issues (<10 = high school, >16 = graduate school).">
+              <label     for="ReadabilityFK" >Readability - Flesch-Kincaid index:</label></span></td>
+          <td><input    name="ReadabilityFK" type="text" value="<?= props[ 'ReadabilityFK' ] ?>"></td></tr>
+      <tr><td><span    title="Flag text below this Flesch Ease level for readability issues (>60 = high school, <30 = graduate school).">
+              <label     for="ReadabilityFE" >Readability - Flesch Ease level:</label></span></td>
+          <td><input    name="ReadabilityFE" type="text" value="<?= props[ 'ReadabilityFE' ] ?>"></td></tr>
+
+      <tr><td colspan="2"><span title="If no header exists, this text is inserted, with tags replaced by values.">
+              <label     for="FormatHeader" >Format for page header (see help for tags):</label></span><br/>
+              <textarea name="FormatHeader"  cols="80" rows="3"><?= props[ 'FormatHeader'  ] ?></textarea></td></tr>
+      <tr><td colspan="2"><span title="If no footer exists, this text is inserted, with tags replaced by values.">
+              <label     for="FormatFooter" >Format for page footer (see help for tags):</label></span><br/>
+              <textarea name="FormatFooter"  cols="80" rows="3"><?= props[ 'FormatFooter'  ] ?></textarea></td></tr>
+
+    </table>
+    <button class="action" id="saveB"  >Save</button>
+    <button                id="cancelB">Cancel</button>  
+  </form>
+  
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+  /**
+   * @preserve Settings.html
+   * - part pf Classroom Activity Utility (CAU) (Google Doc add-on)
+   * - Copyright (c) 2014 Clif Kussmaul, clif@kussmaul.org, clif@cspogil.org
+   */
+  
+  // on document load, assign click handlers to buttons
+  $(function() {
+    $('#saveA'  ).click(saveProps);
+    $('#cancelA').click(cancel   );
+    $('#saveB'  ).click(saveProps);
+    $('#cancelB').click(cancel   );
+  } );
+  
+  /**
+   * When canceled, close settings
+   */
+  function cancel() { google.script.host.close(); }
+  
+  /**
+   * When done, enable save button, close settings
+   */
+  function done(returnSuccess, element) { element.disabled = false; google.script.host.close(); }
+  
+  /**
+   * Save properties to server
+   */
+  function saveProps() {
+    this.disabled = true;
+    var cprops = { // checkbox properties
+       'CreatePDF'     : 'input:checkbox[name= "CreatePDF" ]',
+       'CreateRO'      : 'input:checkbox[name= "CreateRO"  ]',
+       'RemoveOld'     : 'input:checkbox[name= "RemoveOld" ]',
+      'ReplaceText'    : 'input:checkbox[name="ReplaceText"]',
+         'ShowCheck'   : 'input:checkbox[name=  "ShowCheck"]',
+         'ShowTest'    : 'input:checkbox[name=  "ShowTest" ]',
+    };
+    var vprops = { // value properties
+      'AuthorSuffix'   : 'input:text[name="AuthorSuffix"   ]',
+      'SampleStart'    : 'input:text[name="SampleStart"    ]',
+      'SampleStop'     : 'input:text[name="SampleStop"     ]',
+      'SampleSuffix'   : 'input:text[name="SampleSuffix"   ]',
+      'StudentStart'   : 'input:text[name="StudentStart"   ]',
+      'StudentStop'    : 'input:text[name="StudentStop"    ]',
+      'StudentSuffix'  : 'input:text[name="StudentSuffix"  ]',
+      'TeacherStart'   : 'input:text[name="TeacherStart"   ]',
+      'TeacherStop'    : 'input:text[name="TeacherStop"    ]',
+      'TeacherSuffix'  : 'input:text[name="TeacherSuffix"  ]',
+      'ReadabilityCL'  : 'input:text[name="ReadabilityCL"  ]',
+      'ReadabilityFK'  : 'input:text[name="ReadabilityFK"  ]',
+      'ReadabilityFE'  : 'input:text[name="ReadabilityFE"  ]',
+        'ClearHeading' :     'select[name=  "ClearHeading" ]',
+       'FormatHeader'  :   'textarea[name= "FormatHeader"  ]',
+       'FormatFooter'  :   'textarea[name= "FormatFooter"  ]',
+    };
+    var props     = new Object();
+    // convert {true|false} to {'checked'|''}
+    for (var ckey in cprops) { props[ckey] = $( cprops[ckey] ).prop('checked') ? 'checked' : ''; }
+    for (var vkey in vprops) { props[vkey] = $( vprops[vkey] ).val();           }
+    google.script.run
+    .withUserObject     (this)         // pass this (save button) to done()
+    .withSuccessHandler (done)
+    .withFailureHandler (showErr)
+    .setMergedProperties(props);
+  }
+  
+  /**
+   * Show error message below element.
+   */
+  function showErr(msg, element) {
+    element.disabled = false;
+    confirm("ERROR: " + msg);
+    var div = $('<div id="error" class="error">' + msg + '</div>');
+    $(element).after(div);
+  }
+  
+</script>
